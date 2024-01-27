@@ -108,18 +108,19 @@ export const createEntitySlice = <T, Reducers extends SliceCaseReducers<EntitySt
       ...reducers,
     },
     extraReducers(builder) {
-      extraReducers(builder);
       /*
        * Common rejection logic is handled here.
        * If you want to add your own rejection logic, pass `skipRejectionHandling: true`
        * while calling `createEntitySlice`
        * */
       if (!skipRejectionHandling) {
-        builder.addMatcher(isRejectedAction, (state, action) => {
+        builder.addMatcher(isRejectedAction, (state, action: AnyAction) => {
           state.loading = false;
           state.updating = false;
           state.updateSuccess = false;
-          state.errorMessage = action.error.message;
+          if (action.error) {
+            state.errorMessage = action.error.message;
+          }
         });
       }
     },

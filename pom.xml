@@ -897,6 +897,13 @@
                                                     <goal>install-node-and-npm</goal>
                                                     <goal>npm</goal>
                                                 </goals>
+                                                <configuration>
+                                                    <!-- optional: The default argument is actually
+                                                    "install", so unless you need to run some other npm command,
+                                                    you can remove this whole <configuration> section.
+                                                    -->
+                                                    <arguments>install --force</arguments>
+                                                </configuration>
                                             </pluginExecutionFilter>
                                             <action>
                                                 <ignore/>
@@ -1136,6 +1143,13 @@
                                 <goals>
                                     <goal>npm</goal>
                                 </goals>
+                                <configuration>
+                                    <!-- optional: The default argument is actually
+                                    "install", so unless you need to run some other npm command,
+                                    you can remove this whole <configuration> section.
+                                    -->
+                                    <arguments>install --force</arguments>
+                                </configuration>
                             </execution>
                             <execution>
                                 <id>webapp build dev</id>
