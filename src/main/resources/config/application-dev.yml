@@ -93,3 +93,8 @@ jhipster:
 # ===================================================================
 
 # application:
+nce:
+  ipaddr: '10.172.10.10'
+  port: '30330'
+  nbiusername: 'admin'
+  nbipaasword: 'admin'

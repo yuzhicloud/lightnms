@@ -1,15 +1,25 @@
 import './home.scss';
 
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { Translate } from 'react-jhipster';
 import { Row, Col, Alert } from 'reactstrap';
 
 import { getLoginUrl, REDIRECT_URL } from 'app/shared/util/url-utils';
 import { useAppSelector } from 'app/config/store';
+import axios from 'axios';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
+  const [nceUserName, setNceUserName] = useState('');
+  const [nceUserPwd, setNceUserPwd] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loginFailed, setLoginFailed] = useState(false);
+
+  interface NceCredentials {
+    nceUserName: string;
+    nceUserPwd: string;
+  }
+
   useEffect(() => {
     const redirectURL = localStorage.getItem(REDIRECT_URL);
     if (redirectURL) {
@@ -18,18 +28,55 @@ export const Home = () => {
     }
   });
 
+  const handleInputChange1 = e => {
+    setNceUserName(e.target.value);
+  };
+
+  const handleInputChange2 = e => {
+    setNceUserPwd(e.target.value);
+  };
+
+  async function connectToNce(nceUserName: string, nceUserPwd: string): Promise<any> {
+    const credentials: NceCredentials = {
+      nceUserName,
+      nceUserPwd,
+    };
+    try {
+      const response = await axios.post('/api/ncelogin', credentials);
+      console.log('connectToNce::', response);
+      return response.data;
+    } catch (error) {
+      // 处理错误
+      console.error('Error connecting to NCE:', error);
+      throw error;
+    }
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const response = await connectToNce(nceUserName, nceUserPwd);
+      console.log('完整响应:', response);
+      if (response === 'success') {
+        // 请求成功且返回了 'success'
+        console.log('登录成功');
+        setIsSubmitted(true);
+      } else {
+        setLoginFailed(true);
+        console.error('登录失败:', response.data);
+      }
+    } catch (error) {
+      console.error('提交错误:', error);
+      // 处理错误
+    }
+  };
+
   return (
     <Row>
       <Col md="3" className="pad">
         <span className="hipster rounded" />
       </Col>
       <Col md="9">
-        <h1 className="display-4">
-          <Translate contentKey="home.title">Welcome, Java Hipster!</Translate>
-        </h1>
-        <p className="lead">
-          <Translate contentKey="home.subtitle">This is your homepage</Translate>
-        </p>
         {account?.login ? (
           <div>
             <Alert color="success">
@@ -37,62 +84,62 @@ export const Home = () => {
                 You are logged in as user {account.login}.
               </Translate>
             </Alert>
+
+            <h5>Please Connect to NCE </h5>
+            {!isSubmitted ? (
+              <div>
+                {loginFailed && (
+                  <Alert color="danger">
+                    <Translate contentKey="home.nceLoginFailed">登录失败</Translate>
+                  </Alert>
+                )}
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="inputField1">
+                      <Translate contentKey="home.nceUserName">NCE User Name</Translate>
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputField1"
+                      placeholder="username"
+                      value={nceUserName}
+                      onChange={handleInputChange1}
+                    />
+                  </div>
+                  <p></p>
+                  <div className="form-group">
+                    <label htmlFor="inputField2">
+                      <Translate contentKey="home.nceUserPwd">NCE User Password</Translate>
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputField2"
+                      placeholder="password"
+                      value={nceUserPwd}
+                      onChange={handleInputChange2}
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
+                </form>
+              </div>
+            ) : (
+              // 如果已提交，显示成功消息
+              <Alert color="success">
+                <Translate contentKey="home.nceLoginSuccess">处理成功</Translate>
+              </Alert>
+            )}
           </div>
         ) : (
           <div>
-            <Alert color="warning">
-              <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
-
-              <a href={getLoginUrl()} className="alert-link">
-                <Translate contentKey="global.messages.info.authenticated.link">sign in</Translate>
-              </a>
-              <Translate contentKey="global.messages.info.authenticated.suffix">
-                , you can try the default accounts:
-                <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-                <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
-              </Translate>
-            </Alert>
+            <h1 className="display-4">
+              <Translate contentKey="home.title">NMS</Translate>
+            </h1>
           </div>
         )}
-        <p>
-          <Translate contentKey="home.question">If you have any question on JHipster:</Translate>
-        </p>
-
-        <ul>
-          <li>
-            <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.homepage">JHipster homepage</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.stackoverflow">JHipster on Stack Overflow</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.bugtracker">JHipster bug tracker</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.chat">JHipster public chat room</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.follow">follow @jhipster on Twitter</Translate>
-            </a>
-          </li>
-        </ul>
-
-        <p>
-          <Translate contentKey="home.like">If you like JHipster, do not forget to give us a star on</Translate>{' '}
-          <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          !
-        </p>
       </Col>
     </Row>
   );

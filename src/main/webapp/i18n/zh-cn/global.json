@@ -47,8 +47,9 @@
     "messages": {
       "info": {
         "authenticated": {
-          "prefix": "如果您要",
+          "prefix": "请先登录",
           "link": "登录",
+          "ncelink": "连接iMaster NCE",
           "suffix": ", 您可以使用默认账号:<br/>- 管理员 (账号=\"admin\"和密码=\"admin\") <br/>- 普通用户 (账号=\"user\"和密码=\"user\")."
         },
         "register": {
