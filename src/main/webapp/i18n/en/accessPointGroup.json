@@ -1,0 +1,28 @@
+{
+  "lightnmsApp": {
+    "accessPointGroup": {
+      "home": {
+        "title": "Access Point Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Access Point Group",
+        "createOrEditLabel": "Create or edit a Access Point Group",
+        "notFound": "No Access Point Groups found"
+      },
+      "created": "A new Access Point Group is created with identifier {{ param }}",
+      "updated": "A Access Point Group is updated with identifier {{ param }}",
+      "deleted": "A Access Point Group is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Access Point Group {{ id }}?"
+      },
+      "detail": {
+        "title": "Access Point Group"
+      },
+      "id": "ID",
+      "apgId": "Apg Id",
+      "name": "Name",
+      "powerPlant": "Power Plant",
+      "accessPoint": "Access Point",
+      "controller": "Controller"
+    }
+  }
+}

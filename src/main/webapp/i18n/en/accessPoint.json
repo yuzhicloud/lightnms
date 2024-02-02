@@ -1,0 +1,41 @@
+{
+  "lightnmsApp": {
+    "accessPoint": {
+      "home": {
+        "title": "Access Points",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Access Point",
+        "createOrEditLabel": "Create or edit a Access Point",
+        "notFound": "No Access Points found"
+      },
+      "created": "A new Access Point is created with identifier {{ param }}",
+      "updated": "A Access Point is updated with identifier {{ param }}",
+      "deleted": "A Access Point is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Access Point {{ id }}?"
+      },
+      "detail": {
+        "title": "Access Point"
+      },
+      "id": "ID",
+      "nedn": "Nedn",
+      "neid": "Neid",
+      "aliasname": "Aliasname",
+      "nename": "Nename",
+      "necategory": "Necategory",
+      "netype": "Netype",
+      "nevendorname": "Nevendorname",
+      "neesn": "Neesn",
+      "neip": "Neip",
+      "nemac": "Nemac",
+      "version": "Version",
+      "nestate": "Nestate",
+      "createtime": "Createtime",
+      "neiptype": "Neiptype",
+      "subnet": "Subnet",
+      "neosversion": "Neosversion",
+      "controller": "Controller",
+      "group": "Group"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "lightnmsApp": {
+    "accessController": {
+      "home": {
+        "title": "Access Controllers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Access Controller",
+        "createOrEditLabel": "Create or edit a Access Controller",
+        "notFound": "No Access Controllers found"
+      },
+      "created": "A new Access Controller is created with identifier {{ param }}",
+      "updated": "A Access Controller is updated with identifier {{ param }}",
+      "deleted": "A Access Controller is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Access Controller {{ id }}?"
+      },
+      "detail": {
+        "title": "Access Controller"
+      },
+      "id": "ID",
+      "nedn": "Nedn",
+      "neid": "Neid",
+      "aliasname": "Aliasname",
+      "nename": "Nename",
+      "necategory": "Necategory",
+      "netype": "Netype",
+      "nevendorname": "Nevendorname",
+      "neesn": "Neesn",
+      "neip": "Neip",
+      "nemac": "Nemac",
+      "version": "Version",
+      "nestate": "Nestate",
+      "createtime": "Createtime",
+      "neiptype": "Neiptype",
+      "subnet": "Subnet",
+      "neosversion": "Neosversion",
+      "accessPoint": "Access Point",
+      "accessPointGroup": "Access Point Group"
+    }
+  }
+}

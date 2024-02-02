@@ -1,0 +1,28 @@
+{
+  "lightnmsApp": {
+    "accessPointGroup": {
+      "home": {
+        "title": "Access Point Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Access Point Group",
+        "createOrEditLabel": "创建或编辑 Access Point Group",
+        "notFound": "No Access Point Groups found"
+      },
+      "created": "Access Point Group {{ param }} 创建成功",
+      "updated": "Access Point Group {{ param }} 更新成功",
+      "deleted": "Access Point Group {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Access Point Group {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Access Point Group"
+      },
+      "id": "ID",
+      "apgId": "Apg Id",
+      "name": "Name",
+      "powerPlant": "Power Plant",
+      "accessPoint": "Access Point",
+      "controller": "Controller"
+    }
+  }
+}

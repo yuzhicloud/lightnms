@@ -1,0 +1,27 @@
+{
+  "lightnmsApp": {
+    "powerPlant": {
+      "home": {
+        "title": "Power Plants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Power Plant",
+        "createOrEditLabel": "创建或编辑 Power Plant",
+        "notFound": "No Power Plants found"
+      },
+      "created": "Power Plant {{ param }} 创建成功",
+      "updated": "Power Plant {{ param }} 更新成功",
+      "deleted": "Power Plant {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Power Plant {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Power Plant"
+      },
+      "id": "ID",
+      "powerPlantId": "Power Plant Id",
+      "powerPlantName": "Power Plant Name",
+      "accessPointGroup": "Access Point Group",
+      "powerPlant": "Power Plant"
+    }
+  }
+}

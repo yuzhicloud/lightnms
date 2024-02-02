@@ -1,0 +1,27 @@
+{
+  "lightnmsApp": {
+    "powerPlant": {
+      "home": {
+        "title": "Power Plants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Power Plant",
+        "createOrEditLabel": "Create or edit a Power Plant",
+        "notFound": "No Power Plants found"
+      },
+      "created": "A new Power Plant is created with identifier {{ param }}",
+      "updated": "A Power Plant is updated with identifier {{ param }}",
+      "deleted": "A Power Plant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Power Plant {{ id }}?"
+      },
+      "detail": {
+        "title": "Power Plant"
+      },
+      "id": "ID",
+      "powerPlantId": "Power Plant Id",
+      "powerPlantName": "Power Plant Name",
+      "accessPointGroup": "Access Point Group",
+      "powerPlant": "Power Plant"
+    }
+  }
+}

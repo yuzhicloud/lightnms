@@ -1,0 +1,41 @@
+{
+  "lightnmsApp": {
+    "accessController": {
+      "home": {
+        "title": "Access Controllers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Access Controller",
+        "createOrEditLabel": "创建或编辑 Access Controller",
+        "notFound": "No Access Controllers found"
+      },
+      "created": "Access Controller {{ param }} 创建成功",
+      "updated": "Access Controller {{ param }} 更新成功",
+      "deleted": "Access Controller {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Access Controller {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Access Controller"
+      },
+      "id": "ID",
+      "nedn": "Nedn",
+      "neid": "Neid",
+      "aliasname": "Aliasname",
+      "nename": "Nename",
+      "necategory": "Necategory",
+      "netype": "Netype",
+      "nevendorname": "Nevendorname",
+      "neesn": "Neesn",
+      "neip": "Neip",
+      "nemac": "Nemac",
+      "version": "Version",
+      "nestate": "Nestate",
+      "createtime": "Createtime",
+      "neiptype": "Neiptype",
+      "subnet": "Subnet",
+      "neosversion": "Neosversion",
+      "accessPoint": "Access Point",
+      "accessPointGroup": "Access Point Group"
+    }
+  }
+}
