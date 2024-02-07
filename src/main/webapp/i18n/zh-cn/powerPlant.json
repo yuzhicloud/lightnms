@@ -18,7 +18,6 @@
         "title": "Power Plant"
       },
       "id": "ID",
-      "powerPlantId": "Power Plant Id",
       "powerPlantName": "Power Plant Name",
       "accessPointGroup": "Access Point Group",
       "powerPlant": "Power Plant"

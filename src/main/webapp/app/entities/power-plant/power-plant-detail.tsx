@@ -32,12 +32,6 @@ export const PowerPlantDetail = () => {
           </dt>
           <dd>{powerPlantEntity.id}</dd>
           <dt>
-            <span id="powerPlantId">
-              <Translate contentKey="lightnmsApp.powerPlant.powerPlantId">Power Plant Id</Translate>
-            </span>
-          </dt>
-          <dd>{powerPlantEntity.powerPlantId}</dd>
-          <dt>
             <span id="powerPlantName">
               <Translate contentKey="lightnmsApp.powerPlant.powerPlantName">Power Plant Name</Translate>
             </span>

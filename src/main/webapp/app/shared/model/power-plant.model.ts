@@ -3,7 +3,6 @@ import { IProvince } from 'app/shared/model/province.model';
 
 export interface IPowerPlant {
   id?: number;
-  powerPlantId?: number | null;
   powerPlantName?: string | null;
   accessPointGroup?: IAccessPointGroup | null;
   powerPlant?: IProvince | null;

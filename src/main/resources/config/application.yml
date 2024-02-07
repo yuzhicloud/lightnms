@@ -153,18 +153,26 @@ spring:
   output:
     ansi:
       console-available: true
+
   security:
     oauth2:
       client:
-        provider:
-          oidc:
-            issuer-uri: http://localhost:9080/realms/jhipster
         registration:
-          oidc:
-            client-id: web_app
-            client-secret: web_app
-            scope: openid, profile, email, offline_access # last one for refresh tokens
-
+          cas:
+            client-name: WXTYJK # 这是一个标识符
+            client-id: WXTYJK # 从CAS服务器获得的客户端ID
+            client-secret: secret # 从CAS服务器获得的客户端密钥
+            authorization-grant-type: authorization_code # 授权码模式
+            redirect-uri: 'http://10.170.248.34:8080/login/oauth2/code/cas' # 重定向URI
+            scope: openid, profile, email, offline_access # 请求的范围
+            client-authentication-method: client_secret_basic # 客户端认证方式
+        provider:
+          cas:
+            issuer-uri: http://10.170.69.214:8080/cas/oidc/ # CAS服务器的发行者URI
+            authorization-uri: http://10.170.69.214:8080/cas/oidc/authorize # 授权端点
+            token-uri: http://10.170.69.214:8080/cas/oidc/token # 令牌端点
+            user-info-uri: http://10.170.69.214:8080/cas/oidc/profile # 用户信息端点
+            jwk-set-uri: http://10.170.69.214:8080/cas/oidc/jwks # JSON Web Key Set URI
 server:
   servlet:
     session:

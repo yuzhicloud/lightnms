@@ -87,10 +87,6 @@ export const PowerPlant = () => {
                 <th className="hand" onClick={sort('id')}>
                   <Translate contentKey="lightnmsApp.powerPlant.id">ID</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('id')} />
                 </th>
-                <th className="hand" onClick={sort('powerPlantId')}>
-                  <Translate contentKey="lightnmsApp.powerPlant.powerPlantId">Power Plant Id</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('powerPlantId')} />
-                </th>
                 <th className="hand" onClick={sort('powerPlantName')}>
                   <Translate contentKey="lightnmsApp.powerPlant.powerPlantName">Power Plant Name</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('powerPlantName')} />
@@ -109,7 +105,6 @@ export const PowerPlant = () => {
                       {powerPlant.id}
                     </Button>
                   </td>
-                  <td>{powerPlant.powerPlantId}</td>
                   <td>{powerPlant.powerPlantName}</td>
                   <td>
                     {powerPlant.powerPlant ? <Link to={`/province/${powerPlant.powerPlant.id}`}>{powerPlant.powerPlant.id}</Link> : ''}

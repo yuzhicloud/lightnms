@@ -19,9 +19,6 @@ public class PowerPlant implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "power_plant_id")
-    private Long powerPlantId;
-
     @Column(name = "power_plant_name")
     private String powerPlantName;
 
@@ -46,19 +43,6 @@ public class PowerPlant implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getPowerPlantId() {
-        return this.powerPlantId;
-    }
-
-    public PowerPlant powerPlantId(Long powerPlantId) {
-        this.setPowerPlantId(powerPlantId);
-        return this;
-    }
-
-    public void setPowerPlantId(Long powerPlantId) {
-        this.powerPlantId = powerPlantId;
     }
 
     public String getPowerPlantName() {
@@ -130,7 +114,6 @@ public class PowerPlant implements Serializable {
     public String toString() {
         return "PowerPlant{" +
             "id=" + getId() +
-            ", powerPlantId=" + getPowerPlantId() +
             ", powerPlantName='" + getPowerPlantName() + "'" +
             "}";
     }

@@ -56,9 +56,6 @@ export const PowerPlantUpdate = () => {
     if (values.id !== undefined && typeof values.id !== 'number') {
       values.id = Number(values.id);
     }
-    if (values.powerPlantId !== undefined && typeof values.powerPlantId !== 'number') {
-      values.powerPlantId = Number(values.powerPlantId);
-    }
 
     const entity = {
       ...powerPlantEntity,
@@ -106,13 +103,6 @@ export const PowerPlantUpdate = () => {
                   validate={{ required: true }}
                 />
               ) : null}
-              <ValidatedField
-                label={translate('lightnmsApp.powerPlant.powerPlantId')}
-                id="power-plant-powerPlantId"
-                name="powerPlantId"
-                data-cy="powerPlantId"
-                type="text"
-              />
               <ValidatedField
                 label={translate('lightnmsApp.powerPlant.powerPlantName')}
                 id="power-plant-powerPlantName"

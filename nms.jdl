@@ -74,13 +74,12 @@ entity AccessPointGroup {
  
 }
 entity PowerPlant{
-	powerPlantId Long,
-    powerPlantName String
+  powerPlantName String
 }
 
 entity Province{
 	provinceCode Long,//省份编码
-    provinceName String
+  provinceName String
 }
 
 relationship OneToMany {

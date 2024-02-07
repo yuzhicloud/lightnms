@@ -30,9 +30,6 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class PowerPlantResourceIT {
 
-    private static final Long DEFAULT_POWER_PLANT_ID = 1L;
-    private static final Long UPDATED_POWER_PLANT_ID = 2L;
-
     private static final String DEFAULT_POWER_PLANT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_POWER_PLANT_NAME = "BBBBBBBBBB";
 
@@ -60,7 +57,7 @@ class PowerPlantResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static PowerPlant createEntity(EntityManager em) {
-        PowerPlant powerPlant = new PowerPlant().powerPlantId(DEFAULT_POWER_PLANT_ID).powerPlantName(DEFAULT_POWER_PLANT_NAME);
+        PowerPlant powerPlant = new PowerPlant().powerPlantName(DEFAULT_POWER_PLANT_NAME);
         return powerPlant;
     }
 
@@ -71,7 +68,7 @@ class PowerPlantResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static PowerPlant createUpdatedEntity(EntityManager em) {
-        PowerPlant powerPlant = new PowerPlant().powerPlantId(UPDATED_POWER_PLANT_ID).powerPlantName(UPDATED_POWER_PLANT_NAME);
+        PowerPlant powerPlant = new PowerPlant().powerPlantName(UPDATED_POWER_PLANT_NAME);
         return powerPlant;
     }
 
@@ -98,7 +95,6 @@ class PowerPlantResourceIT {
         List<PowerPlant> powerPlantList = powerPlantRepository.findAll();
         assertThat(powerPlantList).hasSize(databaseSizeBeforeCreate + 1);
         PowerPlant testPowerPlant = powerPlantList.get(powerPlantList.size() - 1);
-        assertThat(testPowerPlant.getPowerPlantId()).isEqualTo(DEFAULT_POWER_PLANT_ID);
         assertThat(testPowerPlant.getPowerPlantName()).isEqualTo(DEFAULT_POWER_PLANT_NAME);
     }
 
@@ -137,7 +133,6 @@ class PowerPlantResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(powerPlant.getId().intValue())))
-            .andExpect(jsonPath("$.[*].powerPlantId").value(hasItem(DEFAULT_POWER_PLANT_ID.intValue())))
             .andExpect(jsonPath("$.[*].powerPlantName").value(hasItem(DEFAULT_POWER_PLANT_NAME)));
     }
 
@@ -153,7 +148,6 @@ class PowerPlantResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(powerPlant.getId().intValue()))
-            .andExpect(jsonPath("$.powerPlantId").value(DEFAULT_POWER_PLANT_ID.intValue()))
             .andExpect(jsonPath("$.powerPlantName").value(DEFAULT_POWER_PLANT_NAME));
     }
 
@@ -176,7 +170,7 @@ class PowerPlantResourceIT {
         PowerPlant updatedPowerPlant = powerPlantRepository.findById(powerPlant.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedPowerPlant are not directly saved in db
         em.detach(updatedPowerPlant);
-        updatedPowerPlant.powerPlantId(UPDATED_POWER_PLANT_ID).powerPlantName(UPDATED_POWER_PLANT_NAME);
+        updatedPowerPlant.powerPlantName(UPDATED_POWER_PLANT_NAME);
 
         restPowerPlantMockMvc
             .perform(
@@ -191,7 +185,6 @@ class PowerPlantResourceIT {
         List<PowerPlant> powerPlantList = powerPlantRepository.findAll();
         assertThat(powerPlantList).hasSize(databaseSizeBeforeUpdate);
         PowerPlant testPowerPlant = powerPlantList.get(powerPlantList.size() - 1);
-        assertThat(testPowerPlant.getPowerPlantId()).isEqualTo(UPDATED_POWER_PLANT_ID);
         assertThat(testPowerPlant.getPowerPlantName()).isEqualTo(UPDATED_POWER_PLANT_NAME);
     }
 
@@ -283,7 +276,6 @@ class PowerPlantResourceIT {
         List<PowerPlant> powerPlantList = powerPlantRepository.findAll();
         assertThat(powerPlantList).hasSize(databaseSizeBeforeUpdate);
         PowerPlant testPowerPlant = powerPlantList.get(powerPlantList.size() - 1);
-        assertThat(testPowerPlant.getPowerPlantId()).isEqualTo(DEFAULT_POWER_PLANT_ID);
         assertThat(testPowerPlant.getPowerPlantName()).isEqualTo(DEFAULT_POWER_PLANT_NAME);
     }
 
@@ -299,7 +291,7 @@ class PowerPlantResourceIT {
         PowerPlant partialUpdatedPowerPlant = new PowerPlant();
         partialUpdatedPowerPlant.setId(powerPlant.getId());
 
-        partialUpdatedPowerPlant.powerPlantId(UPDATED_POWER_PLANT_ID).powerPlantName(UPDATED_POWER_PLANT_NAME);
+        partialUpdatedPowerPlant.powerPlantName(UPDATED_POWER_PLANT_NAME);
 
         restPowerPlantMockMvc
             .perform(
@@ -314,7 +306,6 @@ class PowerPlantResourceIT {
         List<PowerPlant> powerPlantList = powerPlantRepository.findAll();
         assertThat(powerPlantList).hasSize(databaseSizeBeforeUpdate);
         PowerPlant testPowerPlant = powerPlantList.get(powerPlantList.size() - 1);
-        assertThat(testPowerPlant.getPowerPlantId()).isEqualTo(UPDATED_POWER_PLANT_ID);
         assertThat(testPowerPlant.getPowerPlantName()).isEqualTo(UPDATED_POWER_PLANT_NAME);
     }
 

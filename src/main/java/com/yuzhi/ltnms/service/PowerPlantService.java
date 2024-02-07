@@ -59,9 +59,6 @@ public class PowerPlantService {
         return powerPlantRepository
             .findById(powerPlant.getId())
             .map(existingPowerPlant -> {
-                if (powerPlant.getPowerPlantId() != null) {
-                    existingPowerPlant.setPowerPlantId(powerPlant.getPowerPlantId());
-                }
                 if (powerPlant.getPowerPlantName() != null) {
                     existingPowerPlant.setPowerPlantName(powerPlant.getPowerPlantName());
                 }
