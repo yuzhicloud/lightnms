@@ -1,0 +1,13 @@
+{
+  "@class": "org.apereo.cas.services.OidcRegisteredService",
+  "serviceId": "http://localhost:8080/login/oauth2/code/cas",
+  "name": "WXTYJK",
+  "id": 1000,
+  "clientId": "WXTYJK",
+  "clientSecret": "secret",
+  "description": "OIDC Client Application",
+  "jwks": "file:/etc/thekeystore/jwks.json",
+  "signIdToken": true,
+  "encryptIdToken": true,
+  "dynamicRegistrationEnabled": false
+}

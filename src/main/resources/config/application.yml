@@ -163,16 +163,24 @@ spring:
             client-id: WXTYJK # 从CAS服务器获得的客户端ID
             client-secret: secret # 从CAS服务器获得的客户端密钥
             authorization-grant-type: authorization_code # 授权码模式
-            redirect-uri: 'http://10.170.248.34:8080/login/oauth2/code/cas' # 重定向URI
+            # redirect-uri: 'http://10.170.248.34:8080/login/oauth2/code/cas' # 重定向URI
+            redirect-uri: 'http://localhost:18080/login/oauth2/code/cas' # 重定向URI
             scope: openid, profile, email, offline_access # 请求的范围
             client-authentication-method: client_secret_basic # 客户端认证方式
         provider:
           cas:
-            issuer-uri: http://10.170.69.214:8080/cas/oidc/ # CAS服务器的发行者URI
-            authorization-uri: http://10.170.69.214:8080/cas/oidc/authorize # 授权端点
-            token-uri: http://10.170.69.214:8080/cas/oidc/token # 令牌端点
-            user-info-uri: http://10.170.69.214:8080/cas/oidc/profile # 用户信息端点
-            jwk-set-uri: http://10.170.69.214:8080/cas/oidc/jwks # JSON Web Key Set URI
+            #            issuer-uri: http://10.170.69.214:8080/cas/oidc/ # CAS服务器的发行者URI
+            #            authorization-uri: http://10.170.69.214:8080/cas/oidc/authorize # 授权端点
+            #            token-uri: http://10.170.69.214:8080/cas/oidc/token # 令牌端点
+            #            user-info-uri: http://10.170.69.214:8080/cas/oidc/profile # 用户信息端点
+            #            jwk-set-uri: http://10.170.69.214:8080/cas/oidc/jwks # JSON Web Key Set URI
+
+            issuer-uri: http://localhost:18080/cas/oidc # CAS服务器的发行者URI
+            authorization-uri: http://localhost:18080/cas/oidc/authorize # 授权端点
+            token-uri: http://localhost:18080/cas/oidc/token # 令牌端点
+            user-info-uri: http://localhost:180800/cas/oidc/profile # 用户信息端点
+            jwk-set-uri: http://localhost:180800/cas/oidc/jwks # JSON Web Key Set URI
+
 server:
   servlet:
     session:
