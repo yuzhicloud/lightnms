@@ -48,8 +48,7 @@ public class SecurityConfiguration {
 
     private final JHipsterProperties jHipsterProperties;
 
-    // @Value("${spring.security.oauth2.client.provider.oidc.issuer-uri}")
-    @Value("${spring.security.oauth2.client.provider.cas.issuer-uri}")
+    @Value("${spring.security.oauth2.client.provider.oidc.issuer-uri}")
     private String issuerUri;
 
     public SecurityConfiguration(JHipsterProperties jHipsterProperties) {
@@ -84,6 +83,7 @@ public class SecurityConfiguration {
                 authz
                     .requestMatchers(mvc.pattern("/index.html"), mvc.pattern("/*.js"), mvc.pattern("/*.txt"), mvc.pattern("/*.json"), mvc.pattern("/*.map"), mvc.pattern("/*.css")).permitAll()
                     .requestMatchers(mvc.pattern("/*.ico"), mvc.pattern("/*.png"), mvc.pattern("/*.svg"), mvc.pattern("/*.webapp")).permitAll()
+                    .requestMatchers(mvc.pattern("/**")).permitAll()
                     .requestMatchers(mvc.pattern("/app/**")).permitAll()
                     .requestMatchers(mvc.pattern("/i18n/**")).permitAll()
                     .requestMatchers(mvc.pattern("/content/**")).permitAll()

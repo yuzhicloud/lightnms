@@ -1,5 +1,6 @@
-FROM apereo/cas:7.0.1
+FROM hotjava/cas:7.1.0-SNAPSHOT
 COPY cas.properties /etc/cas/config/
-#COPY yzcloud.jks /etc/cas/thekeystore/yzcloud.jks
-COPY yzcloud.json /etc/cas/services/
-#RUN apt-get update && apt-get install -y vim
+COPY mykeystore.p12 /etc/cas/thekeystore/mykeystore.p12
+COPY keystore.jwks /etc/cas/config/keystore.jwks
+COPY OIDC-1001.json /etc/cas/services/
+#RUN  apt update && apt install -y vim

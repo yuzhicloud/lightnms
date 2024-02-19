@@ -31,6 +31,7 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
+        {/*<Route path="oauth2/authorization/oidc" element={<LoginRedirect />} />*/}
         <Route path="oauth2/authorization/oidc" element={<LoginRedirect />} />
         <Route
           path="*"

@@ -72,7 +72,7 @@
         <sonar-maven-plugin.version>3.10.0.2594</sonar-maven-plugin.version>
         <spotless-maven-plugin.version>2.41.1</spotless-maven-plugin.version>
         <validation-api.version>3.0.2</validation-api.version>
-        <apereo.cas.version>6.4.0</apereo.cas.version>
+        <apereo.cas.version>7.0.1</apereo.cas.version>
         <apereo.cas.client.springboot.version>4.0.4</apereo.cas.client.springboot.version>
     </properties>
 
