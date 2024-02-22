@@ -49,6 +49,10 @@ public class AdminUserDTO implements Serializable {
 
     private Instant lastModifiedDate;
 
+    private String phone;
+    private String province;
+    private String dept;
+
     private Set<String> authorities;
 
     public AdminUserDTO() {
@@ -68,6 +72,9 @@ public class AdminUserDTO implements Serializable {
         this.createdDate = user.getCreatedDate();
         this.lastModifiedBy = user.getLastModifiedBy();
         this.lastModifiedDate = user.getLastModifiedDate();
+        this.phone = user.getPhone();
+        this.province = user.getProvince();
+        this.dept = user.getDept();
         this.authorities = user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet());
     }
 
@@ -175,22 +182,79 @@ public class AdminUserDTO implements Serializable {
         this.authorities = authorities;
     }
 
-    // prettier-ignore
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getDept() {
+        return dept;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept;
+    }
+
     @Override
     public String toString() {
-        return "AdminUserDTO{" +
-            "login='" + login + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", email='" + email + '\'' +
-            ", imageUrl='" + imageUrl + '\'' +
-            ", activated=" + activated +
-            ", langKey='" + langKey + '\'' +
-            ", createdBy=" + createdBy +
-            ", createdDate=" + createdDate +
-            ", lastModifiedBy='" + lastModifiedBy + '\'' +
-            ", lastModifiedDate=" + lastModifiedDate +
-            ", authorities=" + authorities +
-            "}";
+        return (
+            "AdminUserDTO{" +
+            "id='" +
+            id +
+            '\'' +
+            ", login='" +
+            login +
+            '\'' +
+            ", firstName='" +
+            firstName +
+            '\'' +
+            ", lastName='" +
+            lastName +
+            '\'' +
+            ", email='" +
+            email +
+            '\'' +
+            ", imageUrl='" +
+            imageUrl +
+            '\'' +
+            ", activated=" +
+            activated +
+            ", langKey='" +
+            langKey +
+            '\'' +
+            ", createdBy='" +
+            createdBy +
+            '\'' +
+            ", createdDate=" +
+            createdDate +
+            ", lastModifiedBy='" +
+            lastModifiedBy +
+            '\'' +
+            ", lastModifiedDate=" +
+            lastModifiedDate +
+            ", phone='" +
+            phone +
+            '\'' +
+            ", province='" +
+            province +
+            '\'' +
+            ", dept='" +
+            dept +
+            '\'' +
+            ", authorities=" +
+            authorities +
+            '}'
+        );
     }
 }

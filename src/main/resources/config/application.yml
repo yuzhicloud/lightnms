@@ -158,27 +158,22 @@ spring:
     oauth2:
       client:
         registration:
-          oidc:
-            client-name: OIDC
+          cas:
+            client-name: WXTYJK
             client-id: WXTYJK
             client-secret: secret
             authorization-grant-type: authorization_code
-            redirect-uri: http://192.168.1.2:8080/login/oauth2/code/oidc
+            redirect-uri: http://${server.address}:8080/login/oauth2/code/cas
+            #redirect-uri: http://localhost:8080/login/oauth2/code/cas
             scope: openid, profile, email, offline_access
             client-authentication-method: client_secret_basic
         provider:
-          oidc:
-            #            issuer-uri: http://10.170.69.214:8080/cas/oidc/ # CAS服务器的发行者URI
-            #            authorization-uri: http://10.170.69.214:8080/cas/oidc/authorize # 授权端点
-            #            token-uri: http://10.170.69.214:8080/cas/oidc/token # 令牌端点
-            #            user-info-uri: http://10.170.69.214:8080/cas/oidc/profile # 用户信息端点
-            #            jwk-set-uri: http://10.170.69.214:8080/cas/oidc/jwks # JSON Web Key Set URI
-
-            issuer-uri: http://192.168.1.230:8080/cas/oidc
-            authorization-uri: http://192.168.1.230:8080/cas/oidc/authorize
-            token-uri: http://192.168.1.230:8080/cas/oidc/token
-            user-info-uri: http://192.168.1.230:8080/cas/oidc/profile
-            jwk-set-uri: http://192.168.1.230:8080/cas/oidc/jwks
+          cas:
+            issuer-uri: http://${server.address}:9080/cas/oidc
+            authorization-uri: http://${server.address}:9080/cas/oidc/authorize
+            token-uri: http://${server.address}:9080/cas/oidc/token
+            user-info-uri: http://${server.address}:9080/cas/oidc/profile
+            jwk-set-uri: http://${server.address}:9080/cas/oidc/jwks
 server:
   servlet:
     session:
