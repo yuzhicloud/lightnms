@@ -46,7 +46,7 @@ spring:
     oauth2:
       client:
         provider:
-          oidc:
+          cas:
             issuer-uri: http://DO_NOT_CALL:9080/realms/jhipster
 
 server:

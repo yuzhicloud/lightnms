@@ -32,7 +32,7 @@ const AppRoutes = () => {
           }
         />
         {/*<Route path="oauth2/authorization/oidc" element={<LoginRedirect />} />*/}
-        <Route path="oauth2/authorization/oidc" element={<LoginRedirect />} />
+        <Route path="oauth2/authorization/cas" element={<LoginRedirect />} />
         <Route
           path="*"
           element={

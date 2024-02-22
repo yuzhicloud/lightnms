@@ -48,7 +48,7 @@ public class SecurityConfiguration {
 
     private final JHipsterProperties jHipsterProperties;
 
-    @Value("${spring.security.oauth2.client.provider.oidc.issuer-uri}")
+    @Value("${spring.security.oauth2.client.provider.cas.issuer-uri}")
     private String issuerUri;
 
     public SecurityConfiguration(JHipsterProperties jHipsterProperties) {
@@ -159,7 +159,7 @@ public class SecurityConfiguration {
 
         jwtDecoder.setJwtValidator(withAudience);
         jwtDecoder.setClaimSetConverter(
-            new CustomClaimConverter(clientRegistrationRepository.findByRegistrationId("oidc"), restTemplateBuilder.build())
+            new CustomClaimConverter(clientRegistrationRepository.findByRegistrationId("cas"), restTemplateBuilder.build())
         );
 
         return jwtDecoder;

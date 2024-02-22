@@ -5,6 +5,6 @@ export const getLoginUrl = () => {
   // It will show a Spring Security generated login page with links to configured OIDC providers.
   const strUrl = `//${location.hostname}${port}${location.pathname}login`;
   console.log(strUrl);
-  return `//${location.hostname}${port}${location.pathname}oauth2/authorization/oidc`;
+  return `//${location.hostname}${port}${location.pathname}oauth2/authorization/cas`;
 };
 export const REDIRECT_URL = 'redirectURL';
