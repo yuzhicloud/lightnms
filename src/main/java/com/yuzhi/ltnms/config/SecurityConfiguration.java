@@ -8,8 +8,11 @@ import com.yuzhi.ltnms.security.SecurityUtils;
 import com.yuzhi.ltnms.security.oauth2.AudienceValidator;
 import com.yuzhi.ltnms.security.oauth2.CustomClaimConverter;
 import com.yuzhi.ltnms.security.oauth2.JwtGrantedAuthorityConverter;
+import com.yuzhi.ltnms.service.UserService;
 import com.yuzhi.ltnms.web.filter.SpaWebFilter;
 import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -45,6 +48,8 @@ import tech.jhipster.web.filter.CookieCsrfFilter;
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration {
+
+    private final Logger log = LoggerFactory.getLogger(SecurityConfiguration.class);
 
     private final JHipsterProperties jHipsterProperties;
 
@@ -122,6 +127,7 @@ public class SecurityConfiguration {
 
         return userRequest -> {
             OidcUser oidcUser = delegate.loadUser(userRequest);
+            log.debug("Securityconf::" + oidcUser.toString());
             return new DefaultOidcUser(oidcUser.getAuthorities(), oidcUser.getIdToken(), oidcUser.getUserInfo(), PREFERRED_USERNAME);
         };
     }

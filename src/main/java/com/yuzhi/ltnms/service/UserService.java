@@ -154,6 +154,7 @@ public class UserService {
             throw new IllegalArgumentException("AuthenticationToken is not OAuth2 or JWT!");
         }
         User user = getUser(attributes);
+        log.debug("AdminUseDTO::get user attributes:" + user.toString());
         user.setAuthorities(
             authToken
                 .getAuthorities()
@@ -170,17 +171,20 @@ public class UserService {
         return new AdminUserDTO(syncUserWithIdP(attributes, user));
     }
 
-    private static User getUser(Map<String, Object> details) {
+    private User getUser(Map<String, Object> details) {
         User user = new User();
         Boolean activated = Boolean.TRUE;
         String sub = String.valueOf(details.get("sub"));
+        //System.out.println("AdminUseDTO::get sub:" + user.toString());
+        log.debug("AdminUseDTO::get sub:" + sub);
         String username = null;
         if (details.get("preferred_username") != null) {
             username = ((String) details.get("preferred_username")).toLowerCase();
         }
         // handle resource server JWT, where sub claim is email and uid is ID
-        if (details.get("uid") != null) {
-            user.setId((String) details.get("uid"));
+        //if (details.get("uid") != null) {
+        if (details.get("id") != null) {
+            user.setId((String) details.get("id"));
             user.setLogin(sub);
         } else {
             user.setId(sub);
@@ -226,6 +230,15 @@ public class UserService {
         }
         if (details.get("picture") != null) {
             user.setImageUrl((String) details.get("picture"));
+        }
+        if (details.get("phone") != null) {
+            user.setPhone((String) details.get("phone"));
+        }
+        if (details.get("province") != null) {
+            user.setPhone((String) details.get("province"));
+        }
+        if (details.get("dept") != null) {
+            user.setPhone((String) details.get("dept"));
         }
         user.setActivated(activated);
         return user;

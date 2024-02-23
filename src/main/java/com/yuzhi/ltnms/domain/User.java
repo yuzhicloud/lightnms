@@ -40,12 +40,12 @@ public class User extends AbstractAuditingEntity<String> implements Serializable
     @Column(name = "last_name", length = 50)
     private String lastName;
 
-    @Email
-    @Size(min = 5, max = 254)
+    //@Email
+    //@Size(min = 5, max = 254)
     @Column(length = 254, unique = true)
     private String email;
 
-    @NotNull
+    //@NotNull
     @Column(nullable = false)
     private boolean activated = false;
 
@@ -57,7 +57,6 @@ public class User extends AbstractAuditingEntity<String> implements Serializable
     @Column(name = "image_url", length = 256)
     private String imageUrl;
 
-    /**/
     @Size(max = 50)
     @Column(name = "phone", length = 50)
     private String phone;

@@ -17,6 +17,7 @@ import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequest
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestResolver;
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.stereotype.Component;
@@ -51,6 +52,7 @@ public class OAuth2RefreshTokensWebFilter extends OncePerRequestFilter {
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
         throws IOException, ServletException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        logger.debug("Get Principal with DoFilterInternal::" + authentication.getPrincipal());
         if ((authentication instanceof OAuth2AuthenticationToken)) {
             try {
                 OAuth2AuthorizedClient authorizedClient = authorizedClient((OAuth2AuthenticationToken) authentication);
